@@ -1,2 +1,3 @@
 # Kangaroo
-Kangaroo is service for Backup and Restor on openstack
+Kangaroo is open source service for Backup and Restor on openstack for local storage
+
