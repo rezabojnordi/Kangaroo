@@ -1,0 +1,6 @@
+Flask==2.0.2
+flask-restx==0.5.1
+celery==5.2.1
+pymongo==4.0.1
+redis==4.0.2
+
