@@ -1,8 +1,7 @@
 import requests
 import json
 import time
-from config.config import config
-
+from config import config
 '''
 this class for authonticate in keyston
 '''
@@ -39,7 +38,7 @@ class Authonticate():
         return json.dumps(body)
 
     def getURL(self):
-        return "http:// {} :5000/v3/auth/tokens".format(config.url)
+        return "http://{}:5000/v3/auth/tokens".format(config.url)
     
     '''
    this function for get token
