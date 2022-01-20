@@ -14,4 +14,10 @@ class InfoHost():
         header= {"X-Auth-Token":self.auth.getToken(),"Content-Type":"application/json"}
         r = requests.get(self.getURL()+"/%s"%self.instance_id , headers=header,verify=False)
         response=r.json()
-        return response["server"]["OS-EXT-SRV-ATTR:host"]
+        return {
+                "compute":response["server"]["OS-EXT-SRV-ATTR:host"],
+                "instance_name": response["server"]["OS-EXT-SRV-ATTR:instance_name"],
+                "status": response["server"]["status"],
+                "project_id": response["server"]["tenant_id"]
+            }
+    
