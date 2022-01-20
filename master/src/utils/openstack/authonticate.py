@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from config import config
+from . import config
 '''
 this class for authonticate in keyston
 '''

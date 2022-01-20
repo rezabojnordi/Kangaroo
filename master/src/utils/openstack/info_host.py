@@ -1,6 +1,6 @@
 import requests
-from authonticate import Authonticate
-from config import config
+from .authonticate import Authonticate
+from . import config
 
 class InfoHost():
     def __init__(self,instance_id):

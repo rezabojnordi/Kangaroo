@@ -110,3 +110,5 @@ db_helper_obj = Database(
 
 # TODO: Change how the Database object is created with a if __name__ == "__main__";
 # Otherwise it should be created where it's needed not here in this module
+
+
