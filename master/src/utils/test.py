@@ -10,7 +10,7 @@ def change(instance_id):
     print(auth)
     print(info_host.detailHost())
     print(auth.getToken())
-    request_to_agent("172.20.8.6", instance_id)
+    #request_to_agent("172.20.8.6", instance_id)
 
 
 change('3989c2fc-2dad-43b2-ac96-68bb886d13ca')
