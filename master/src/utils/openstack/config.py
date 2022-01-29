@@ -1,9 +1,9 @@
 
-user_name = "admin"
-password = "3a9a1ad42322a246e72356"
-url= "172.20.8.5"
-project_scope_name = "admin"
-domain_id = "default"
+user_name = "user"
+password = "0"
+url= "192.16.1.1"
+project_scope_name = "user"
+domain_id = "defa"
 
 
 
