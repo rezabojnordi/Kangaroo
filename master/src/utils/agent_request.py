@@ -16,5 +16,5 @@ def make_body(body):
     scope ={
             "project": {
                 "instance_id": body }}
-    return "scope"
+    return scope
 

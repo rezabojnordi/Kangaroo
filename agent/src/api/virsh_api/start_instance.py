@@ -2,8 +2,6 @@ import libvirt
 from . import checkStatus
 
 
-
-
 def start_instance(domainName):
     conn = libvirt.open("qemu:///system")
     domain = conn.lookupByName(domainName)

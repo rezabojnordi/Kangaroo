@@ -1,7 +1,7 @@
 
 import libvirt
 from . import checkStatus
-def shutdown_instance(domainName):
+def shutdown(domainName):
     try:
         conn = libvirt.open("qemu:///system")
         #domainName = sys.argv[1]
