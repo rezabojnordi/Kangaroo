@@ -4,6 +4,7 @@ from api.virsh_api.shutdown_instance import shutdown
 from api.virsh_api.dump_xml import dupxml
 import os 
 from api.config import config
+import re
 class Backup():
     def __init__(self,instance_id,instance_name,xml_file=""):
         self.instance_id = instance_id
@@ -11,15 +12,12 @@ class Backup():
         self.xml_file = xml_file
         
 
-
     
-
     def dump_xml(self):
         xml = dupxml(self.instance_name)
         make_xml_dump(self.instance_name,xml)
         url = split_path(xml)
-        print(url)
-        return xml
+        return url
     
 
 
@@ -31,15 +29,6 @@ class Backup():
             return False
     
 
-
-    def cp_instance(self):
-        try:
-            os.system("cp -ar /home/sae  /tmp/")
-            return True
-        except print(0):
-            return False
-
-    
 
 
 
@@ -57,8 +46,28 @@ def make_xml_dump(instance_name,xml):
 
 
 def split_path(xml):
-    url = xml.split('/var/lib/nova/instances')
-    return url
+    url = re.findall("((nova).instances).(.*)",xml)
+    disk = "/tmp/var/lib/nova/instances/{}".format(url[0][2])
+    base_image = "/tmp/var/lib/nova/instances/{}".format(url[1][2])
+    obj = {
+        "disk":disk.split("/disk'")[0],
+        "base_image":base_image.replace("'/>"," ")
+    }
+    cp = cp_instance(obj)
+    return cp
+
+
+
+def cp_instance(url):
+    try:
+        cp1 = os.system("cp -ar {} {}".format(url["disk"],"/BACKUP/"))
+        cp2 = os.system("cp -ar {} {}".format(url["base_image"],"/BACKUP/"))
+        if cp1 > 0 and cp2 > 0:
+            #file not found
+            return False
+        return True
+    except print(0):
+        return False
 
 
 

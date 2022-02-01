@@ -1,9 +1,9 @@
 
 user_name = "user"
-password = "272356"
+password = "pass"
 url= "192.168.1.1"
-project_scope_name = "user"
-domain_id = "defa"
+project_scope_name = "admin"
+domain_id = "def"
 
 
 
