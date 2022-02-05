@@ -1,3 +1,4 @@
+from os import stat
 import libvirt
 
 def checkStatus(state, reason):
@@ -12,6 +13,7 @@ def checkStatus(state, reason):
         elif state == libvirt.VIR_DOMAIN_PAUSED:
             status = "Paused"
         elif state == libvirt.VIR_DOMAIN_SHUTDOWN:
+            
             status = "Shutdown"
         elif state == libvirt.VIR_DOMAIN_SHUTOFF:
             status = "Shutoff"
@@ -22,5 +24,6 @@ def checkStatus(state, reason):
         else:
             status = "State Unknown"
             return status
+        return status
     except:
         return False

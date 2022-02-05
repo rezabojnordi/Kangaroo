@@ -1,6 +1,6 @@
 # Todo
 
-from api.virsh_api.shutdown_instance import shutdown
+
 from api.virsh_api.dump_xml import dupxml
 import os 
 from api.config import config
@@ -15,20 +15,11 @@ class Backup():
     
     def dump_xml(self):
         xml = dupxml(self.instance_name)
-        make_xml_dump(self.instance_name,xml)
-        url = split_path(xml)
-        return url
-    
-
-
-    def shut_instance(self):
-        status = shutdown(self.instance_name)
-        if status == True:
+        make_xml = make_xml_dump(self.instance_name,xml)
+        if make_xml == True:
+            split_path(xml)
             return True
-        else:
-            return False
-    
-
+        return False
 
 
 
@@ -53,13 +44,14 @@ def split_path(xml):
         "disk":disk.split("/disk'")[0],
         "base_image":base_image.replace("'/>"," ")
     }
-    cp = cp_instance(obj)
-    return cp
+    cp_instance(obj)
+    return True
 
 
 
 def cp_instance(url):
     try:
+        print("cpppp")
         cp1 = os.system("cp -ar {} {}".format(url["disk"],"/BACKUP/"))
         cp2 = os.system("cp -ar {} {}".format(url["base_image"],"/BACKUP/"))
         if cp1 > 0 and cp2 > 0:

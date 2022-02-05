@@ -1,8 +1,8 @@
 import libvirt
-from . import checkStatus
+from api.virsh_api.checkStatus import checkStatus
 
 
-def start_instance(domainName):
+def start(domainName):
     conn = libvirt.open("qemu:///system")
     domain = conn.lookupByName(domainName)
     domain.create()

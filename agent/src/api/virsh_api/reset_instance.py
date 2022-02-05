@@ -1,6 +1,6 @@
 
 import libvirt
-from . import checkStatus
+from api.virsh_api.checkStatus import checkStatus
 
 
 
